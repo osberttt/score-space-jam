@@ -20,6 +20,7 @@ public class ObjectPool : MonoBehaviour
         {
             instance = Instantiate(pooledObject);
             instance.gameObject.SetActive(false);
+            instance.transform.parent = transform;
             instance.pool = this;
             stack.Push(instance);
 		}
