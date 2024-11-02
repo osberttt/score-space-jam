@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public ObjectPool bulletPool;
     public float fireRate = 1f;
     public float bulletSpeed = 2f;
-    public int numberOfBullets = 10;
+    public int numberOfBullets = 10 ;
     public float radius = 5f;
 
     private float nextFireTime = 0f;
