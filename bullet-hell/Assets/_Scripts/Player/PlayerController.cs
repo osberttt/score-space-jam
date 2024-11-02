@@ -95,7 +95,5 @@ public class PlayerController : MonoBehaviour
                 anim.Play("Idle");   
 			}
 		}
-
-
     }
 }
