@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [HideInInspector] public ObjectPool bulletPool;
+    public ObjectPool bulletPool;
     public float fireRate = 1f;
     public float bulletSpeed = 2f;
     public int numberOfBullets = 10 ;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         if (Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
-            offset += rotationRate/numberOfBullets;
+            offset += rotationRate;
             for (int i = 0; i < numberOfBullets; i++)
             {
                 float angle = (i * 2 * Mathf.PI / numberOfBullets) + offset;
