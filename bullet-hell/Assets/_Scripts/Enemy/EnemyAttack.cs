@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core;
 
-public class Enemy : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     public ObjectPool bulletPool;
     public float fireRate = 1f;
