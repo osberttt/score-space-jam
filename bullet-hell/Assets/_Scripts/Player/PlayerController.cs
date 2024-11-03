@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         playerAttack = GetComponent<PlayerAttack>();
 
-        body.bodyType = RigidbodyType2D.Kinematic;
         body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
