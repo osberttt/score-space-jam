@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Game Objects")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform _spawnPointsParent;
     [SerializeField] private Transform _enemyParent;
-    public List<Transform> spawnPoints;
-    [SerializeField] private float spawnCD = 1f;
+    [SerializeField] private ObjectPool bulletPool;
+
+    [Header("Numbers")]
+    [SerializeField] private int maxEnemies;
+    [SerializeField] private int minBullets;
+    [SerializeField] private int maxBullets;
+    [SerializeField] private float spawnCD;
+
+    // Lists
+    [HideInInspector] public List<Transform> spawnPoints;
 
     private void Awake()
     {
@@ -38,10 +47,19 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            Transform spawnPos = Util.GetRandomElementFromList(spawnPoints);
-            GameObject instance = Instantiate(enemyPrefab, spawnPos.position, Quaternion.identity);
-            instance.transform.parent = _enemyParent;
+            if (_enemyParent.transform.childCount < maxEnemies) SpawnAnEnemy();           
             yield return new WaitForSeconds(spawnCD);
         }
+    }
+    private void SpawnAnEnemy()
+    {
+        Transform spawnPos = Util.GetRandomElementFromList(spawnPoints);
+        GameObject instance = Instantiate(enemyPrefab, spawnPos.position, Quaternion.identity);
+        instance.transform.parent = _enemyParent;
+
+        Enemy enemy = instance.GetComponent<Enemy>();
+        enemy.bulletPool = bulletPool;
+        enemy.numberOfBullets = Util.GetRandomNumberRange(minBullets, maxBullets);
+
     }
 }

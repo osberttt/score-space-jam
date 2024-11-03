@@ -90,10 +90,7 @@ public class PlayerController : MonoBehaviour
             {
                 anim.Play("RunS");
 			}
-            else
-            {
-                anim.Play("Idle");   
-			}
+
 		}
     }
 }

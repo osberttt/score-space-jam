@@ -27,4 +27,10 @@ public static class Util
         int randomIndex = Random.Range(0, list.Count);
         return list[randomIndex];
     }
+
+    public static int GetRandomNumberRange(int min, int max)
+    {
+        System.Random random = new System.Random();
+        return random.Next(min, max);
+    }
 }
