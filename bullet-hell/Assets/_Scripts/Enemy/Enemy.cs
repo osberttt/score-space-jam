@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,12 +24,17 @@ public class Enemy : MonoBehaviour
             offset += rotationRate;
             for (int i = 0; i < numberOfBullets; i++)
             {
-                float angle = (i * 2 * Mathf.PI / numberOfBullets) + offset;
-                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-                PooledObject bullet = bulletPool.GetObject();
+                // bullet instantiation
+                Projectile bullet = (Projectile) bulletPool.GetObject();
+
+                // bullet setup
                 bullet.gameObject.SetActive(true);
                 bullet.transform.position = transform.position;
                 bullet.aliveTime = bulletAliveTime;
+
+                // bullet movement
+                float angle = (i * 2 * Mathf.PI / numberOfBullets) + offset;
+                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = direction * bulletSpeed;
             }

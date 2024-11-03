@@ -210,6 +210,18 @@ PrefabInstance:
       propertyPath: bulletPool
       value: 
       objectReference: {fileID: 1924013753}
+    - target: {fileID: 5994719122117689458, guid: f4a356f8396b32b44b5dbaf1db6adaee, type: 3}
+      propertyPath: maxBullets
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994719122117689458, guid: f4a356f8396b32b44b5dbaf1db6adaee, type: 3}
+      propertyPath: maxEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994719122117689458, guid: f4a356f8396b32b44b5dbaf1db6adaee, type: 3}
+      propertyPath: minBullets
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7438594791122853117, guid: f4a356f8396b32b44b5dbaf1db6adaee, type: 3}
       propertyPath: player
       value: 
@@ -667,6 +679,10 @@ PrefabInstance:
       propertyPath: bulletPool
       value: 
       objectReference: {fileID: 234340378}
+    - target: {fileID: 3518726486509407110, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5891805256565128049, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -795,9 +811,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3259294742046530900, guid: 7d8467467b8664643b3ff1f135ee988d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8226414557165896796}
-    - targetCorrespondingSourceObject: {fileID: 3259294742046530900, guid: 7d8467467b8664643b3ff1f135ee988d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8226414557165896797}
   m_SourcePrefab: {fileID: 100100000, guid: 7d8467467b8664643b3ff1f135ee988d, type: 3}
 --- !u!114 &8226414557165896796
 MonoBehaviour:
@@ -815,27 +828,6 @@ MonoBehaviour:
   activationZones:
   - {fileID: 1785484138}
   exit: {fileID: 8304424431186322172}
---- !u!114 &8226414557165896797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640931294638166020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6724f8aec9f387f4ab0ca9d613354abf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7165616301022856924, guid: 227f5f5d353bf9b47959a9109938acea, type: 3}
-  _spawnPointsParent: {fileID: 0}
-  _enemyParent: {fileID: 0}
-  bulletPool: {fileID: 0}
-  maxEnemies: 0
-  minBullets: 0
-  maxBullets: 0
-  spawnCD: 0
-  spawnPoints: []
 --- !u!114 &8304424431186322172 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5235489521141119734, guid: 7d8467467b8664643b3ff1f135ee988d, type: 3}

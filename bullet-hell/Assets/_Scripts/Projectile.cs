@@ -1,20 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : PooledObject 
 {
-    [SerializeField] private string targetTag;
-
     private void Update()
     {
         aliveTime -= Time.deltaTime;
-        if (aliveTime < 0f) Release();
+        if (aliveTime < 0f) Explode();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Explode()
     {
-        if (collision.CompareTag(targetTag))
-        {
-            Release();
-		}
+        // Play bullet explosion animation
+        Release();
     }
 }

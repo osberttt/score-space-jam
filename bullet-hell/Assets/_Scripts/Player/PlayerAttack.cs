@@ -1,4 +1,5 @@
 using UnityEngine;
+using Core;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class PlayerAttack : MonoBehaviour
 
     public void Fire(Vector2 aDirection)
     {
-        PooledObject bullet = bulletPool.GetObject();
+        // bullet instantiation
+        Projectile bullet = (Projectile) bulletPool.GetObject();
+
+        // bullet setup
         bullet.gameObject.SetActive(true);
         bullet.transform.position = (Vector2)transform.position + aDirection * firePosOffset;
         bullet.aliveTime = bulletAliveTime;
+
+        // bullet movement
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = aDirection * bulletSpeed;
     }

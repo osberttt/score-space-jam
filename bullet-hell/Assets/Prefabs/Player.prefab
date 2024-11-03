@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5703178097770910639}
   - component: {fileID: 1245992556073054385}
   - component: {fileID: 3518726486509407110}
+  - component: {fileID: 9145834691610519941}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -202,3 +203,17 @@ MonoBehaviour:
   bulletPool: {fileID: 0}
   bulletAliveTime: 3
   firePosOffset: 1
+--- !u!114 &9145834691610519941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039290773825982991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fedbf151f78b1e488691127d2924e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.2
+  _maxHealth: 3

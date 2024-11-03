@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7477563880796862060}
   m_Layer: 0
   m_Name: RedBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,4 +163,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 7528251989671592432, guid: 9c991aa9f0b4a46bba5e5e032c19cac9, type: 3}
   aliveTime: 0
-  targetTag: Player

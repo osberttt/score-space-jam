@@ -32,7 +32,7 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.Tags.Player))
+        if (collision.CompareTag(Constants.Tags.Player) && _enemySpawner)
         {
             _enemySpawner.SpawnEnemies();
         }
