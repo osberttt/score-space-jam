@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1602990981f4c599e589424b24c5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 15
+  bulletSpeed: 10
   bulletPool: {fileID: 0}
   bulletAliveTime: 2
   firePosOffset: 1

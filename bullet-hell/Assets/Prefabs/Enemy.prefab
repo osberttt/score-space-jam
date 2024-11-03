@@ -141,7 +141,7 @@ MonoBehaviour:
   numberOfBullets: 3
   radius: 5
   rotationRate: 10
-  bulletAliveTime: 3
+  bulletAliveTime: 2
 --- !u!114 &5554209500527947639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86204a23c94ba14087b8b6e3b56710b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   wanderRadius: 2
   wanderDuration: 5
   playerTransform: {fileID: 0}

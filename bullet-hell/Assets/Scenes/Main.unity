@@ -695,13 +695,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1245992556073054385, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3518726486509407110, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
       propertyPath: bulletPool
       value: 
       objectReference: {fileID: 234340378}
     - target: {fileID: 3518726486509407110, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
       propertyPath: bulletSpeed
-      value: 25
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518726486509407110, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
+      propertyPath: bulletAliveTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5891805256565128049, guid: c31c5ffe45eef442a92f29ef69823f7d, type: 3}
       propertyPath: m_LocalPosition.x
