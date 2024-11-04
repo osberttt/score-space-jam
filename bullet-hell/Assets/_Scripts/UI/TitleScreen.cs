@@ -13,7 +13,7 @@ public class TitleScreen : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start Game");
-        SceneLoader.Instance.LoadSceneWithLoadingScreen("Scenes/" + Constants.Scenes.Main);
+        SceneLoader.Instance.LoadSceneWithLoadingScreen(Constants.Scenes.Main);
         Time.timeScale = 1;
     }
 
