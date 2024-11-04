@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageableBase : MonoBehaviour,IDamageable
 {
+    [SerializeField] private Image _healthBar;
     // hit animation
     private SpriteRenderer spriteRenderer;
     [SerializeField] private float hitDuration = 0.2f;
@@ -32,10 +34,27 @@ public class DamageableBase : MonoBehaviour,IDamageable
     {
         Hit();
         _currentHealth -= damageAmount;
-        if (_currentHealth <= 0)
+        if (_currentHealth <= 0) Die();
+        else UpdateHealthBar();
+    }
+
+    public void RestoreHealth(float health)
+    {
+        if (_currentHealth + health > _maxHealth)
         {
-            Die();
+            _currentHealth = _maxHealth;
         }
+        else
+        {
+            _currentHealth += health;
+        }
+
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        _healthBar.fillAmount = _currentHealth / _maxHealth;
     }
 
     private void Update()
