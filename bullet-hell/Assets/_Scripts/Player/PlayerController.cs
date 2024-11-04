@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     private SpriteRenderer sprite;
     private Animator anim;
-    private PlayerAttack playerAttack; 
-
+    private PlayerAttack playerAttack;
+    public bool isControllable;
 
     private void Awake()
     {
@@ -28,15 +28,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        body.velocity = direction * moveSpeed;
+        if (isControllable)
+        {
+            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            body.velocity = direction * moveSpeed;
 
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        fireCooldownTimer += Time.deltaTime;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            fireCooldownTimer += Time.deltaTime;
 
-        HandleFlip();
-        HandleMoveAnim();
-        HandleAttack();
+            HandleFlip();
+            HandleMoveAnim();
+            HandleAttack();
+        }
     }
 
     private void HandleAttack()

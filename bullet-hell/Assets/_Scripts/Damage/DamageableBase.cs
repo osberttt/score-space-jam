@@ -52,7 +52,7 @@ public class DamageableBase : MonoBehaviour,IDamageable
         UpdateHealthBar();
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         _healthBar.fillAmount = _currentHealth / _maxHealth;
     }
