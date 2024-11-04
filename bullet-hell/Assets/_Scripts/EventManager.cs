@@ -6,6 +6,7 @@ public static class GameplayEvent
     public static UnityEvent ResumeGame = new();
     public static UnityEvent PlayerDie = new();
     public static UnityEvent EnemyDie = new();
+    public static UnityEvent GameOver = new();
 }
 
 public static class EventManager

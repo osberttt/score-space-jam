@@ -15,12 +15,6 @@ public class PauseUI : MonoBehaviour
         SettingUI.SetActive(false);       
     }
 
-    public void ResumeGame()
-    {
-        Debug.Log("Resume Game");
-        EventManager.InvokeEvent(GameplayEvent.ResumeGame);
-    }
-
     public void SettingMenu()
     {
         SettingUI.SetActive(true);
