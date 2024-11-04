@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
+using LootLocker;
 
 public class LootLockerManager : MonoBehaviour
 {
     private string leaderboardKey = "doomsdaykickoff";
     public TMP_Text playerNames;
     public TMP_Text playerScores;
+    public WhiteLabelLogin login;
 
     private void Update()
     {
@@ -19,7 +21,7 @@ public class LootLockerManager : MonoBehaviour
 
     public void SetPlayerName()
     {
-        LootLockerSDKManager.SetPlayerName("PlayerName", (response) => 
+        LootLockerSDKManager.SetPlayerName(login.existingUserEmailInputField.text, (response) => 
 		{ 
 		    if (response.success)
             {
@@ -55,26 +57,20 @@ public class LootLockerManager : MonoBehaviour
         { 
 		    if (response.success)
             {
-                string tempPlayerNames = "Names\n";
-                string tempPlayerScores= "Scores\n";
-                
                 LootLockerLeaderboardMember[] members = response.items;
 
                 for (int i=0; i<members.Length; i++)
                 {
                     if (members[i].player.name != "")
                     {
-                        tempPlayerNames += members[i].player.name;
+                        playerNames.text += members[i].player.name + "\n";
 					}
                     else
                     {
-                        tempPlayerNames += members[i].player.id;
+                        playerNames.text += members[i].player.id + "\n";
 					}
-                    tempPlayerScores += members[i].score + "\n";
-                    tempPlayerNames += "\n"; 
+                    playerScores.text += members[i].score + "\n";
                 }
-                playerNames.text = tempPlayerNames;
-                playerScores.text = tempPlayerScores;
             }
             else 
 			{

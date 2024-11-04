@@ -6,7 +6,7 @@ public class GameplayManager : MonoBehaviour
 {
     [SerializeField] PauseUI pauseUI;
     [SerializeField] InputHealthUI inputHealthUI;
-    [SerializeField] GameObject loginUI;
+    [SerializeField] LoginUI loginUI;
     [SerializeField] GameOverUI gameOverUI;
     [SerializeField] PlayerHit playerHit; // for health
     [SerializeField] PlayerController playerController; // for health
@@ -27,8 +27,17 @@ public class GameplayManager : MonoBehaviour
 
     private void Start()
     {
-        loginUI.SetActive(true);
+        Debug.Log("Player logged in before: " + LoginRecorder.isPlayerLoggedIn);
+        if (!LoginRecorder.isPlayerLoggedIn)
+        {
+            loginUI.gameObject.SetActive(true);
+        }
+        else 
+		{ 
+            inputHealthUI.gameObject.SetActive(true);
+		}
         playerController.isControllable = false;
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -80,7 +89,7 @@ public class GameplayManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneLoader.Instance.LoadSceneWithLoadingScreen(Constants.Scenes.Main);
+        SceneLoader.Instance.LoadSceneWithoutLoadingScreen(Constants.Scenes.Main);
 	}
 
     public void OnGameOver()
@@ -88,18 +97,26 @@ public class GameplayManager : MonoBehaviour
         //Time.timeScale = 0;
         Debug.Log("Game Over");
         playerController.isControllable = false;
+        Time.timeScale = 0;
         StartCoroutine(GameOverRoutine());
 	}
 
     public void OnPlayerLogin()
     {
-        loginUI.SetActive(false);
+        loginUI.gameObject.SetActive(false);
+        LoginRecorder.isPlayerLoggedIn = true;
         inputHealthUI.gameObject.SetActive(true);
+        lootLockerManager.SetPlayerName();
 	}
 
     IEnumerator GameOverRoutine()
     {
-        int finalScore = (int)(playerHit.Health - playerHit.MaxHealth);
+        int finalScore = Mathf.Abs((int)(playerHit.Health - playerHit.MaxHealth));
+        if (playerHit.Health == 0)
+        {
+            // Player die
+            finalScore = 0;
+		}
         gameOverUI.SetScoreValue(finalScore);
         gameOverUI.gameObject.SetActive(true);
         yield return lootLockerManager.SubmitScoreRoutine(finalScore); 

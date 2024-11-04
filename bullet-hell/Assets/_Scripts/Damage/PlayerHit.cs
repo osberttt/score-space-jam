@@ -5,8 +5,6 @@ using Core;
 
 public class PlayerHit : DamageableBase
 {
-    public LootLockerManager lootLockManager;
-
     public override void Die()
     {
         // Don't wanna distroy player 
