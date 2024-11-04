@@ -610,6 +610,71 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6192598829596682974, guid: 913c4c6fe6d8c4ea0a71ec0b32a2d557, type: 3}
   m_PrefabInstance: {fileID: 1353217881516381407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &583219133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -159.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499264838475800042, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681607574697833944, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: _music.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f6f9d2a4bd0ef14888e0e0b87f43286, type: 3}
+    - target: {fileID: 2681607574697833944, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: _music.name
+      value: main menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3458377752626312516, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
+      propertyPath: m_Name
+      value: Music Loader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a292e826ff99ee40b2c5213ac39b2b3, type: 3}
 --- !u!224 &728832554 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6611900844868367199, guid: 62e3c6aafd34b460187817456905a710, type: 3}
@@ -1476,7 +1541,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2, y: 377}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_SizeDelta: {x: 10000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836683511
 MonoBehaviour:
@@ -1498,9 +1563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Name
-
-'
+  m_text: Doomsday Kickoff
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1985,3 +2048,4 @@ SceneRoots:
   - {fileID: 283082728}
   - {fileID: 6922750374209242770}
   - {fileID: 92917759}
+  - {fileID: 583219133}

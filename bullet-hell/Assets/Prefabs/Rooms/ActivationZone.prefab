@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 6804017922265141682}
   - component: {fileID: 5252085288944019846}
   - component: {fileID: 7067597307462903679}
+  - component: {fileID: 9148082617222344641}
   m_Layer: 0
   m_Name: ActivationZone
   m_TagString: Untagged
@@ -178,8 +179,8 @@ SpriteRenderer:
   m_SortingLayerID: 1154026369
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7921569, g: 0.38741446, b: 0.20392156, a: 1}
+  m_Sprite: {fileID: -616633428, guid: 6cb2defb3c3258c45b5343f8620181a1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -251,7 +252,29 @@ MonoBehaviour:
   timer: 0
   stepOn: 0
   room: {fileID: 0}
+  glassBreak: {fileID: 8300000, guid: f6dd214e506b5f04b9ed1b76b79b82b5, type: 3}
   isActivate: 0
+--- !u!95 &9148082617222344641
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785026953662743978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a595376820b7bfd46ad70fb190fc14c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4465719379530630013
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.22747001, b: 0.093716644, a: 1}
+  m_Color: {r: 0.09411765, g: 0.09907341, b: 0.50980395, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

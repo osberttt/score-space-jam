@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    private Transform player;
     private bool isPassable;
     private SpriteRenderer sprite;
     private BoxCollider2D boxCollider;
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerController>().gameObject.GetComponent<Transform>();
         boxCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -38,7 +39,7 @@ public class Exit : MonoBehaviour
         { 
             isPassable = false;
             boxCollider.enabled = true;
-            sprite.color = Color.red;
+            sprite.color = Color.white;
 		}
     }
 }

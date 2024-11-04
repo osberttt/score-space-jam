@@ -47,9 +47,9 @@ public class GameplayManager : MonoBehaviour
 
     private void HandlePauseGame()
     { 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Press P");
+            Debug.Log("Press Esc");
             if (!isGamePaused)
             {
                 PauseGame();
@@ -111,12 +111,8 @@ public class GameplayManager : MonoBehaviour
 
     IEnumerator GameOverRoutine()
     {
-        int finalScore = Mathf.Abs((int)(playerHit.Health - playerHit.MaxHealth));
-        if (playerHit.Health == 0)
-        {
-            // Player die
-            finalScore = 0;
-		}
+        int finalScore = ((int)(playerHit.Health - playerHit.MaxHealth));
+
         gameOverUI.SetScoreValue(finalScore);
         gameOverUI.gameObject.SetActive(true);
         yield return lootLockerManager.SubmitScoreRoutine(finalScore); 

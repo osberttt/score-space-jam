@@ -31,7 +31,7 @@ public class SelectionArrow : MonoBehaviour
                 ChangeOption(1);
                 PlayChangeAudio();
             }
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 SelectOption();
             }

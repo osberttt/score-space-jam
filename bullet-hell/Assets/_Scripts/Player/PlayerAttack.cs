@@ -3,6 +3,7 @@ using Core;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private AudioClip attackSfx;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private ObjectPool bulletPool;
     [SerializeField] private float bulletAliveTime = 3f;
@@ -21,5 +22,6 @@ public class PlayerAttack : MonoBehaviour
         // bullet movement
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = aDirection * bulletSpeed;
+        AudioManager.Instance.PlaySoundFXClip(attackSfx, transform, 50f);
     }
 }

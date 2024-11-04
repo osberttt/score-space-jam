@@ -42,6 +42,7 @@ public class DamageableBase : MonoBehaviour,IDamageable
     {
         if (_currentHealth + health > _maxHealth)
         {
+            MaxHealth = _currentHealth + health;
             _currentHealth = _maxHealth;
         }
         else

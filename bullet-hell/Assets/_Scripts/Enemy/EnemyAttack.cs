@@ -5,6 +5,7 @@ using Core;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] private AudioClip attackSfx;
     public ObjectPool bulletPool;
     public float fireRate = 1f;
     public float bulletSpeed = 2f;
@@ -27,6 +28,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (Time.time >= nextFireTime)
         {
+            AudioManager.Instance.PlaySoundFXClip(attackSfx, transform, 20f);
             nextFireTime = Time.time + fireRate;
             offset += rotationRate;
             for (int i = 0; i < numberOfBullets; i++)

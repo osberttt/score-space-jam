@@ -8,13 +8,15 @@ public class ActivationZone : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private bool stepOn;
     [HideInInspector] public Room room;
+
+    [SerializeField] private AudioClip glassBreak;
     public bool isActivate;
 
-    private SpriteRenderer sprite;
+    private Animator animator;
 
     private void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -28,7 +30,8 @@ public class ActivationZone : MonoBehaviour
         {
             stepOn = false;
             isActivate = true;
-            sprite.color = Color.green;
+            animator.Play("AZ break");
+            AudioManager.Instance.PlaySoundFXClip(glassBreak, transform, 50f);
             room.numActivatedZone += 1;
 		}
         UpdateHealthBar();

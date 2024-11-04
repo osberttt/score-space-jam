@@ -21,7 +21,8 @@ public class AudioManager : Singleton<AudioManager>
     
     public void PlayMusicClipWithReverb(Sound sound, float reverbTime)
     {
-        StartCoroutine(ReverbCo(sound, reverbTime));
+        //StartCoroutine(ReverbCo(sound, reverbTime));
+        PlayMusicClip(sound);
     }
    
     IEnumerator ReverbCo(Sound sound, float reverbTime)
