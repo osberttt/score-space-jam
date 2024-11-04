@@ -13,7 +13,7 @@ public class SettingUI : MonoBehaviour
     private void Start()
     {
         BGMScrollBar.value = AudioManager.Instance.GetMusicVolume();
-        SFXScrollBar.value = AudioManager.Instance.GetMusicVolume();
+        SFXScrollBar.value = AudioManager.Instance.GetSfxVolume();
     }
 
     private void OnEnable()

@@ -4,11 +4,11 @@
     {
         public static class Scenes
         {
-            public const string Loading = "Loading";
+            public const string Loading = "Scenes/Loading";
             
-            public const string MainMenu = "MainMenu";
+            public const string MainMenu = "Scenes/MainMenu";
 
-            public const string Main = "Main";
+            public const string Main = "Scenes/Main";
         }
 
         public static class Tags
