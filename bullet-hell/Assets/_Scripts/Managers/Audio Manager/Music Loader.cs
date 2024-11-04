@@ -8,7 +8,7 @@ public class MusicLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.Instance.PlayMusicClip( _music );
+        AudioManager.Instance.PlayMusicClipWithReverb( _music, 1.8f );
     }
 
     private void OnDestroy()

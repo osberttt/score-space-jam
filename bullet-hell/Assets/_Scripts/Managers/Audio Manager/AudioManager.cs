@@ -4,21 +4,42 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _musicSource1;
+    [SerializeField] private AudioSource _musicSource2;
     [SerializeField] private AudioSource _sfxSource;
 
     //[SerializeField] private float _fadeTime = 0f;
 
     public void PlayMusicClip(Sound sound)
     {
-        if (sound.clip == _musicSource.clip)
+        if (sound.clip == _musicSource1.clip)
             return;
-        _musicSource.clip = sound.clip;
-        _musicSource.loop = true;
-        _musicSource.Play();    
+        _musicSource1.clip = sound.clip;
+        _musicSource1.loop = true;
+        _musicSource1.Play();    
     }
     
+    public void PlayMusicClipWithReverb(Sound sound, float reverbTime)
+    {
+        StartCoroutine(ReverbCo(sound, reverbTime));
+    }
    
+    IEnumerator ReverbCo(Sound sound, float reverbTime)
+    {
+        while (true)
+        {
+            Debug.Log("source1 playing");
+            _musicSource1.clip = sound.clip;
+            _musicSource1.Play();
+            yield return new WaitForSeconds(sound.clip.length - reverbTime);
+
+            Debug.Log("source2 playing");
+            _musicSource2.clip = sound.clip;
+            _musicSource2.Play();
+            yield return new WaitForSeconds(sound.clip.length - reverbTime);
+
+        }
+    }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawntransform, float volume)
     {
@@ -46,7 +67,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void SetMusicVolume(float volume)
     {
-        _musicSource.volume = Mathf.Clamp(volume, 0f, 1f);
+        _musicSource1.volume = Mathf.Clamp(volume, 0f, 1f);
     }
 
     public void SetSfxVolume(float volume)
@@ -56,7 +77,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public float GetMusicVolume()
     {
-        return _musicSource.volume;
+        return _musicSource1.volume;
     }
 
     public float GetSfxVolume()
@@ -66,6 +87,6 @@ public class AudioManager : Singleton<AudioManager>
 
     public void StopMusic()
     {
-        _musicSource.Stop();
+        _musicSource1.Stop();
     }
 }
