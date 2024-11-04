@@ -5,7 +5,9 @@ public class GameplayManager : MonoBehaviour
     // GameplayManager take the charge in invoking Events
 
     [SerializeField] PauseUI pauseUI;
+    [SerializeField] InputHealthUI inputHealthUI;
     [SerializeField] PlayerHit playerHit; // for health
+    [SerializeField] PlayerController playerController; // for health
     public static bool isGamePaused;
 
     private void OnEnable()
@@ -16,6 +18,12 @@ public class GameplayManager : MonoBehaviour
     private void OnDisable()
     {
         //EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
+    }
+
+    private void Start()
+    {
+        playerController.isControllable = false;
+        inputHealthUI.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -55,9 +63,14 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 1;
 	}
 
-    public void InputInitHealth(int aValue)
+    public void SetupInitHealth()
     {
-        playerHit.MaxHealth = aValue;
+        playerHit.Health = inputHealthUI.inputHealth;
+        playerHit.UpdateHealthBar();
+        inputHealthUI.gameObject.SetActive(false);
+        playerController.isControllable = true;
+        Debug.Log("Set initial health to " + inputHealthUI.inputHealth);
+        Time.timeScale = 1;
 	}
 
     public void GameOver()
