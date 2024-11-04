@@ -1,18 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using LootLocker.Requests;
+using TMPro;
 
-public class LootLocker : MonoBehaviour
+public class LootLockerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private string leaderboardKey = "doomsdaykickoff";
+
+
+    private void Start()
     {
-        
+        StartCoroutine(LoginRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator LoginRoutine()
     {
-        
+        bool done = false;
+        LootLockerSDKManager.StartGuestSession((response) =>
+        {
+            if (response.success)
+            {
+                Debug.Log("Player was logged in");
+                PlayerPrefs.SetString("PlayerID", response.player_id.ToString());
+                done = true;
+            }
+            else
+            {
+                Debug.Log("Could not start session");
+                done = true;
+            }
+
+        });
+        yield return new WaitWhile(() => done == false);
     }
+
+    public IEnumerator SubmitScoreRoutine(int scoreToUpload)
+    {
+        bool done = false;
+        string playerID = PlayerPrefs.GetString("PlayerID");
+        LootLockerSDKManager.SubmitScore(playerID, scoreToUpload, leaderboardKey, (response) =>
+        { 
+		    if (!response.success)
+            {
+                Debug.Log("Failed: " + response.errorData.ToString());
+			}
+            done = true;
+            Debug.Log("Successfully uploaded score: " + scoreToUpload.ToString());
+        });
+        yield return new WaitWhile(() => done == false);
+	}
 }

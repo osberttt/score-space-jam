@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -9,15 +10,16 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] PlayerHit playerHit; // for health
     [SerializeField] PlayerController playerController; // for health
     public static bool isGamePaused;
+    public LootLockerManager lootLockerManager;
 
     private void OnEnable()
     {
-        //EventManager.RegisterToEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.RegisterToEvent(GameplayEvent.GameOver, OnGameOver);       
     }
 
     private void OnDisable()
     {
-        //EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
     }
 
     private void Start()
@@ -73,8 +75,18 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 1;
 	}
 
-    public void GameOver()
+    public void OnGameOver()
     {
-        EventManager.InvokeEvent(GameplayEvent.GameOver);
+        //Time.timeScale = 0;
+        Debug.Log("Game Over");
+        playerController.isControllable = false;
+        StartCoroutine(GameOverRoutine());
+	}
+
+    IEnumerator GameOverRoutine()
+    {
+        int finalScore = (int)(playerHit.Health - playerHit.MaxHealth);
+        Debug.Log("Try to submit score: " + finalScore.ToString());
+        yield return lootLockerManager.SubmitScoreRoutine(finalScore); 
 	}
 }
