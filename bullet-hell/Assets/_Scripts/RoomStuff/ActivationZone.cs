@@ -1,8 +1,9 @@
 using UnityEngine;
 using Core;
-
+using UnityEngine.UI;
 public class ActivationZone : MonoBehaviour
 {
+    [SerializeField] private Image _healthBar;
     [SerializeField] private float requiredTime;
     [SerializeField] private float timer;
     [SerializeField] private bool stepOn;
@@ -29,8 +30,13 @@ public class ActivationZone : MonoBehaviour
             isActivate = true;
             sprite.color = Color.green;
             room.numActivatedZone += 1;
-            Debug.Log("Activate");
 		}
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        _healthBar.fillAmount = (requiredTime - timer) / requiredTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

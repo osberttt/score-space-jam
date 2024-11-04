@@ -38,6 +38,15 @@ public class Room : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Constants.Tags.Player) && _enemySpawner)
+        {
+            _enemySpawner.StopSpawningEnemies();
+            _enemySpawner.ClearEnemies();
+        }
+    }
+
     private void SetupActivationZones()
     { 
         foreach(ActivationZone zone in activationZones)
