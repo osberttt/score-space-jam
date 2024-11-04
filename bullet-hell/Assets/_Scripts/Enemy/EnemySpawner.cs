@@ -19,12 +19,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int maxBullets;
     [SerializeField] private float spawnCD;
 
+    private List<GameObject> enemies;
+
     // Lists
     [HideInInspector] public List<Transform> spawnPoints;
 
     private void Awake()
     {
-        GetSpawnPoints();      
+        GetSpawnPoints();
+        enemies = new List<GameObject>();
     }
 
     private void GetSpawnPoints()
@@ -40,15 +43,24 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private bool isSpawning;
     public void SpawnEnemies()
     {
+        isSpawning = true;
+        SpawnEnemyGroup(maxEnemies);
         StartCoroutine(SpawnEnemiesCo());
     }
 
+    public void StopSpawningEnemies()
+    {
+        isSpawning = false;
+    }
     IEnumerator SpawnEnemiesCo()
     {
-        while (true)
+        while (isSpawning)
         {
+            yield return new WaitForSeconds(spawnCD);
+
             // For random number of enemies per wave
             int numberOfEnemies = Util.GetRandomNumberRange(1, maxEnemiesPerWave);
             if (_enemyParent.transform.childCount < maxEnemies) SpawnEnemyGroup(numberOfEnemies);
@@ -56,7 +68,6 @@ public class EnemySpawner : MonoBehaviour
             // For one enemy per wave
             //Transform spawnPos = Util.GetRandomElementFromList(spawnPoints);
             //if (_enemyParent.transform.childCount < maxEnemies) SpawnAnEnemy(spawnPos);           
-            yield return new WaitForSeconds(spawnCD);
         }
     }
 
@@ -80,5 +91,16 @@ public class EnemySpawner : MonoBehaviour
 
         EnemyController enemyController = instance.GetComponent<EnemyController>();
         enemyController.playerTransform = playerTransform;
+
+        enemies.Add(instance);
+    }
+
+    public void ClearEnemies()
+    {
+        foreach(GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        enemies.Clear();
     }
 }

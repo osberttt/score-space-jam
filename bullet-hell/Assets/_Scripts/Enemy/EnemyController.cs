@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         if (wanderTimer > 0)
         {
-            Wander();
+            MoveTowardsPlayer();
             wanderTimer -= Time.deltaTime;
         }
         else
