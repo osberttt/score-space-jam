@@ -23,6 +23,6 @@ public class PauseUI : MonoBehaviour
     public void GoToMenu()
     {
         Debug.Log("Go To Menu");
-        SceneLoader.Instance.LoadSceneWithLoadingScreen(Constants.Scenes.MainMenu);
+        SceneLoader.Instance.LoadSceneWithoutLoadingScreen(Constants.Scenes.MainMenu);
     }
 }

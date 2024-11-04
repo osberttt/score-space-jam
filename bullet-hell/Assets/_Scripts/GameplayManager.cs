@@ -1,29 +1,43 @@
 using UnityEngine;
+using System.Collections;
+using Core;
 
 public class GameplayManager : MonoBehaviour
 {
-    // GameplayManager take the charge in invoking Events
-
     [SerializeField] PauseUI pauseUI;
     [SerializeField] InputHealthUI inputHealthUI;
+    [SerializeField] LoginUI loginUI;
+    [SerializeField] GameOverUI gameOverUI;
     [SerializeField] PlayerHit playerHit; // for health
     [SerializeField] PlayerController playerController; // for health
     public static bool isGamePaused;
+    public LootLockerManager lootLockerManager;
 
     private void OnEnable()
     {
-        //EventManager.RegisterToEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.RegisterToEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.RegisterToEvent(GameplayEvent.PlayerLogin, OnPlayerLogin);       
     }
 
     private void OnDisable()
     {
-        //EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.UnregisterFromEvent(GameplayEvent.PlayerLogin, OnPlayerLogin);       
     }
 
     private void Start()
     {
+        Debug.Log("Player logged in before: " + LoginRecorder.isPlayerLoggedIn);
+        if (!LoginRecorder.isPlayerLoggedIn)
+        {
+            loginUI.gameObject.SetActive(true);
+        }
+        else 
+		{ 
+            inputHealthUI.gameObject.SetActive(true);
+		}
         playerController.isControllable = false;
-        inputHealthUI.gameObject.SetActive(true);
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -73,8 +87,39 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 1;
 	}
 
-    public void GameOver()
+    public void RestartGame()
     {
-        EventManager.InvokeEvent(GameplayEvent.GameOver);
+        SceneLoader.Instance.LoadSceneWithoutLoadingScreen(Constants.Scenes.Main);
+	}
+
+    public void OnGameOver()
+    {
+        //Time.timeScale = 0;
+        Debug.Log("Game Over");
+        playerController.isControllable = false;
+        Time.timeScale = 0;
+        StartCoroutine(GameOverRoutine());
+	}
+
+    public void OnPlayerLogin()
+    {
+        loginUI.gameObject.SetActive(false);
+        LoginRecorder.isPlayerLoggedIn = true;
+        inputHealthUI.gameObject.SetActive(true);
+        lootLockerManager.SetPlayerName();
+	}
+
+    IEnumerator GameOverRoutine()
+    {
+        int finalScore = Mathf.Abs((int)(playerHit.Health - playerHit.MaxHealth));
+        if (playerHit.Health == 0)
+        {
+            // Player die
+            finalScore = 0;
+		}
+        gameOverUI.SetScoreValue(finalScore);
+        gameOverUI.gameObject.SetActive(true);
+        yield return lootLockerManager.SubmitScoreRoutine(finalScore); 
+        yield return lootLockerManager.FatchTopHighscoresRoutine(); 
 	}
 }

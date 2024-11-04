@@ -55,6 +55,7 @@ public class WhiteLabelLogin : MonoBehaviour
                     // Session was succesfully started;
                     // After this you can use LootLocker features
                     infoText.text = "Session started successfully";
+                    EventManager.InvokeEvent(GameplayEvent.PlayerLogin);
                 }
                 else
                 {

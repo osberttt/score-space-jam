@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         {
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
             body.velocity = direction * moveSpeed;
-
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             fireCooldownTimer += Time.deltaTime;
 
