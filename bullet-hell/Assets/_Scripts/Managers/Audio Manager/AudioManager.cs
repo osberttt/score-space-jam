@@ -28,12 +28,10 @@ public class AudioManager : Singleton<AudioManager>
     {
         while (true)
         {
-            Debug.Log("source1 playing");
             _musicSource1.clip = sound.clip;
             _musicSource1.Play();
             yield return new WaitForSeconds(sound.clip.length - reverbTime);
 
-            Debug.Log("source2 playing");
             _musicSource2.clip = sound.clip;
             _musicSource2.Play();
             yield return new WaitForSeconds(sound.clip.length - reverbTime);

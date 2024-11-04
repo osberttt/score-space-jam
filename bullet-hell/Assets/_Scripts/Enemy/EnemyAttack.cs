@@ -21,6 +21,7 @@ public class EnemyAttack : MonoBehaviour
     private void Awake()
     {
         bullets = new List<Projectile>();
+        nextFireTime = fireRate;
     }
     void Update()
     {

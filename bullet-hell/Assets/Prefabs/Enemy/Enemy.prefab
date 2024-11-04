@@ -254,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.19272871, g: 0.6698113, b: 0.47727942, a: 1}
   m_FlipX: 0
@@ -314,12 +314,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 0}
-  fireRate: 3
-  bulletSpeed: 5
+  fireRate: 2
+  bulletSpeed: 3
   numberOfBullets: 3
   radius: 5
   rotationRate: 10
-  bulletAliveTime: 2
+  bulletAliveTime: 5
   bullets: []
 --- !u!114 &5554209500527947639
 MonoBehaviour:
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 4419859683317563837}
   hitDuration: 0.2
-  _maxHealth: 2
+  _maxHealth: 3
 --- !u!114 &3286211213776897101
 MonoBehaviour:
   m_ObjectHideFlags: 0
