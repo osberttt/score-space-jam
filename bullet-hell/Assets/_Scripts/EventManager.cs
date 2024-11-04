@@ -2,6 +2,7 @@ using UnityEngine.Events;
 
 public static class GameplayEvent 
 {
+    public static UnityEvent PlayerLogin = new();
     public static UnityEvent PauseGame = new();
     public static UnityEvent ResumeGame = new();
     public static UnityEvent PlayerDie = new();

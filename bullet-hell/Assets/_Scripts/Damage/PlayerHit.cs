@@ -10,7 +10,7 @@ public class PlayerHit : DamageableBase
     public override void Die()
     {
         // Don't wanna distroy player 
-        EventManager.InvokeEvent(GameplayEvent.PlayerDie);
+        EventManager.InvokeEvent(GameplayEvent.GameOver);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

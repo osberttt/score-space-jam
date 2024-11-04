@@ -21,6 +21,7 @@ public class InputHealthUI : MonoBehaviour
     {
         inputHealth = (int)inputHealthSlider.value;
         healthValueText.text = inputHealth.ToString() + " / " + ((int)playerHit.MaxHealth).ToString();
+        playerHit.Health = inputHealth;
         playerHit.UpdateHealthBar();
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))

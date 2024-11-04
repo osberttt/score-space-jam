@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using Core;
 
 public class GameplayManager : MonoBehaviour
 {
-    // GameplayManager take the charge in invoking Events
-
     [SerializeField] PauseUI pauseUI;
     [SerializeField] InputHealthUI inputHealthUI;
+    [SerializeField] GameObject loginUI;
+    [SerializeField] GameOverUI gameOverUI;
     [SerializeField] PlayerHit playerHit; // for health
     [SerializeField] PlayerController playerController; // for health
     public static bool isGamePaused;
@@ -15,17 +16,19 @@ public class GameplayManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.RegisterToEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.RegisterToEvent(GameplayEvent.PlayerLogin, OnPlayerLogin);       
     }
 
     private void OnDisable()
     {
         EventManager.UnregisterFromEvent(GameplayEvent.GameOver, OnGameOver);       
+        EventManager.UnregisterFromEvent(GameplayEvent.PlayerLogin, OnPlayerLogin);       
     }
 
     private void Start()
     {
+        loginUI.SetActive(true);
         playerController.isControllable = false;
-        inputHealthUI.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -75,6 +78,11 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 1;
 	}
 
+    public void RestartGame()
+    {
+        SceneLoader.Instance.LoadSceneWithLoadingScreen(Constants.Scenes.Main);
+	}
+
     public void OnGameOver()
     {
         //Time.timeScale = 0;
@@ -83,10 +91,18 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameOverRoutine());
 	}
 
+    public void OnPlayerLogin()
+    {
+        loginUI.SetActive(false);
+        inputHealthUI.gameObject.SetActive(true);
+	}
+
     IEnumerator GameOverRoutine()
     {
         int finalScore = (int)(playerHit.Health - playerHit.MaxHealth);
-        Debug.Log("Try to submit score: " + finalScore.ToString());
+        gameOverUI.SetScoreValue(finalScore);
+        gameOverUI.gameObject.SetActive(true);
         yield return lootLockerManager.SubmitScoreRoutine(finalScore); 
+        yield return lootLockerManager.FatchTopHighscoresRoutine(); 
 	}
 }
