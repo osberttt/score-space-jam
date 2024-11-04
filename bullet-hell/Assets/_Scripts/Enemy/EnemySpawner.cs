@@ -13,7 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     [Header("Numbers")]
-    [SerializeField] private int maxEnemies;
+    [SerializeField] private int maxEnemies; // enemy capacity of the room
+    [SerializeField] private int maxEnemiesPerWave;
     [SerializeField] private int minBullets;
     [SerializeField] private int maxBullets;
     [SerializeField] private float spawnCD;
@@ -48,13 +49,28 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (_enemyParent.transform.childCount < maxEnemies) SpawnAnEnemy();           
+            // For random number of enemies per wave
+            int numberOfEnemies = Util.GetRandomNumberRange(1, maxEnemiesPerWave);
+            if (_enemyParent.transform.childCount < maxEnemies) SpawnEnemyGroup(numberOfEnemies);
+
+            // For one enemy per wave
+            //Transform spawnPos = Util.GetRandomElementFromList(spawnPoints);
+            //if (_enemyParent.transform.childCount < maxEnemies) SpawnAnEnemy(spawnPos);           
             yield return new WaitForSeconds(spawnCD);
         }
     }
-    private void SpawnAnEnemy()
+
+    private void SpawnEnemyGroup(int numberOfEnemies)
     {
-        Transform spawnPos = Util.GetRandomElementFromList(spawnPoints);
+        List<Transform> SpawnPosGroup = Util.GetRandomElementsFromList(spawnPoints, numberOfEnemies);
+        foreach(Transform spawnPos in SpawnPosGroup)
+        {
+            SpawnAnEnemy(spawnPos);
+        }
+    }
+
+    private void SpawnAnEnemy(Transform spawnPos)
+    {       
         GameObject instance = Instantiate(enemyPrefab, spawnPos.position, Quaternion.identity);
         instance.transform.parent = _enemyParent;
 
