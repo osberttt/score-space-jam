@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DamageableBase : MonoBehaviour,IDamageable
 {
+    [SerializeField] private ParticleSystem bodyExplosionParticles;
     [SerializeField] private Image _healthBar;
     // hit animation
     private SpriteRenderer spriteRenderer;
@@ -27,6 +28,7 @@ public class DamageableBase : MonoBehaviour,IDamageable
 
     public virtual void Die()
     {
+        Instantiate(bodyExplosionParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

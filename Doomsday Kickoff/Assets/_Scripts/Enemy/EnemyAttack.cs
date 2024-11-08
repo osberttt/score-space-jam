@@ -17,11 +17,9 @@ public class EnemyAttack : MonoBehaviour
     public float rotationRate = 10f;
     public float bulletAliveTime = 3f;
 
-    public List<Projectile> bullets;
 
     private void Awake()
     {
-        bullets = new List<Projectile>();
         nextFireTime = fireRate;
     }
     void Update()
@@ -47,7 +45,6 @@ public class EnemyAttack : MonoBehaviour
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = direction * bulletSpeed;
 
-                bullets.Add(bullet);
             }
         }
     }

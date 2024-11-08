@@ -429,7 +429,6 @@ MonoBehaviour:
   radius: 5
   rotationRate: 10
   bulletAliveTime: 5
-  bullets: []
 --- !u!114 &5554209500527947639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,9 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05aadfb4f356e14f86b3a82dbcdbfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyExplosionParticles: {fileID: 5109678159904393014, guid: 0a83ecaa50499244eb37fa52ba8518ef, type: 3}
   _healthBar: {fileID: 4419859683317563837}
   hitDuration: 0.2
-  _maxHealth: 3
+  _maxHealth: 1
 --- !u!114 &3286211213776897101
 MonoBehaviour:
   m_ObjectHideFlags: 0
