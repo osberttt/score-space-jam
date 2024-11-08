@@ -10,7 +10,7 @@ public class EnemyHit : DamageableBase
         if (collision.CompareTag(Constants.Tags.PlayerBullet))
         {
             TakeDamage(1f);
-            collision.GetComponent<Projectile>().Explode();
+            collision.GetComponent<Projectile>().Release();
         }
     }
 }

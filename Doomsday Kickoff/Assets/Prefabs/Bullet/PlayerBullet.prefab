@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 2224185264739343015, guid: 731e01868321f4aa18ae1d21abd4f0c2, type: 3}
   aliveTime: 3
+  bulletHitParticles: {fileID: 1553929275840305172, guid: e8689ed08580c9443a9a47709b54563e, type: 3}
 --- !u!95 &2217627206834955327
 Animator:
   serializedVersion: 5
