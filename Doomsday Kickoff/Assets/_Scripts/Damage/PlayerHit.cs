@@ -5,6 +5,7 @@ using Core;
 
 public class PlayerHit : DamageableBase
 {
+    public int initialHealth;
     public override void Die()
     {
         // Don't wanna distroy player 

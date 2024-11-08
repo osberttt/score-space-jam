@@ -80,6 +80,7 @@ public class GameplayManager : MonoBehaviour
     public void SetupInitHealth()
     {
         playerHit.Health = inputHealthUI.inputHealth;
+        playerHit.initialHealth = inputHealthUI.inputHealth;
         playerHit.UpdateHealthBar();
         inputHealthUI.gameObject.SetActive(false);
         playerController.isControllable = true;
@@ -111,7 +112,8 @@ public class GameplayManager : MonoBehaviour
 
     IEnumerator GameOverRoutine()
     {
-        int finalScore = ((int)(playerHit.Health - playerHit.MaxHealth));
+        int finalScore = ((int)(playerHit.Health - playerHit.initialHealth));
+        if (finalScore < 0) finalScore = 0;
 
         gameOverUI.SetScoreValue(finalScore);
         gameOverUI.gameObject.SetActive(true);
