@@ -1249,6 +1249,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1924013753}
     - target: {fileID: 635452608704108583, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
+      propertyPath: maxEnemies
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 635452608704108583, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 2065840966}
@@ -1300,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[25].second.m_TileSpriteIndex
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3131221407494726487, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
+      propertyPath: activationZones.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3844204305574739855, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
       propertyPath: player
       value: 
@@ -1321,9 +1329,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1924013753}
     - target: {fileID: 4039270943154243739, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
+      propertyPath: maxEnemies
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039270943154243739, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 2065840966}
+    - target: {fileID: 4039270943154243739, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
+      propertyPath: maxEnemiesPerWave
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4258047832763325700, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
       propertyPath: m_LocalScale.y
       value: 6
@@ -1421,6 +1437,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1924013753}
     - target: {fileID: 5235275420894623686, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
+      propertyPath: maxEnemies
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235275420894623686, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 2065840966}
@@ -1497,7 +1517,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2065840966}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5432093865565830709, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c0d983e5c95e84ba7c563ed3f0b911, type: 3}
